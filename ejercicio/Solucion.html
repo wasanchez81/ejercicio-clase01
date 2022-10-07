@@ -5,29 +5,35 @@
             mermaid.initialize({ startOnLoad: true });
         </script>
        
-        <h5>Ejemplo 02</h5>
+       <h5>Diagrama 01</h5>
+       <div class="mermaid">
+           graph LR 
+           A[Equipo] --> B[Jugador] --> C[Sancion] 
+       </div>
+
+        <h5>Diagrama 02</h5>
         <div class="mermaid">
           classDiagram
+              
+            class Equipo
+            Equipo : +String nombre
+            Equipo : +String tipo_deporte
+            Equipo : +String siglas
+            Equipo : +get (idEquipo int)
+           
+            Equipo "1" --> "0..*" Jugador
         
-    
-    class Equipo
-    Equipo : +String name
-    Equipo : +String tipo_deporte
-    Equipo : +String siglas
-    Equipo : get()
+            class Jugador
+            Jugador : +String nombre
+            Jugador : +String apellido
+            Jugador : +get (idJugador int)
 
-    Equipo "1" --> "0..*" Jugador
-   
-    class Jugador
-    Jugador : +String name
-    Jugador : +String lastname
+            Jugador "1" --> "0..*" Sancion
 
-    Jugador "1" --> "0..*" Sancion
-
-    class Sancion
-    Sancion : +String observacion
-    Sancion : +desimal multa
-
+            class Sancion
+            Sancion : +String observacion
+            Sancion : +float multa
+            Sancion : +get (calcularMulta float)
 
         </div>
     </body>
