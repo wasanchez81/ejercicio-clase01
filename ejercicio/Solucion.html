@@ -9,30 +9,25 @@
         <div class="mermaid">
           classDiagram
         
-    class Persona
-    Persona : +String name
-    Persona : +String lastname
-    Persona : +int age
-    Persona : +String adress
-    
-    Persona "1" --> "*" Equipo
     
     class Equipo
-    Equipo : +name
-    Equipo : +tipo_deporte
-    Equipo : +siglas
+    Equipo : +String name
+    Equipo : +String tipo_deporte
+    Equipo : +String siglas
+    Equipo : get()
 
-    Equipo "1" --> "*" Jugador
+    Equipo "1" --> "0..*" Jugador
    
     class Jugador
     Jugador : +String name
     Jugador : +String lastname
 
-    Jugador "1" --> "*" Sancion
+    Jugador "1" --> "0..*" Sancion
 
     class Sancion
     Sancion : +String observacion
     Sancion : +desimal multa
+
 
         </div>
     </body>
