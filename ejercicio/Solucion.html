@@ -4,37 +4,40 @@
         <script>
             mermaid.initialize({ startOnLoad: true });
         </script>
-       
-       <h5>Diagrama 01</h5>
-       <div class="mermaid">
-           graph LR 
-           A[Equipo] --> B[Jugador] --> C[Sancion] 
-       </div>
-
-        <h5>Diagrama 02</h5>
+      
+        <h2>Pasar el modelo PIM a un modelo PSM</h2>
         <div class="mermaid">
-          classDiagram
-              
-            class Equipo
-            Equipo : +String nombre
-            Equipo : +String tipo_deporte
-            Equipo : +String siglas
-            Equipo : +get (idEquipo int)
-           
-            Equipo "1" --> "0..*" Jugador
+        classDiagram
+        class Equipo{
+            +String nombre
+            +String tipo_deporte
+            +String siglas
+            +get (idEquipo int)
+            +set (nombres String)
+            +set (tipo_deporte String)
+            +set (siglas String)
+        }
+        direction LR
+        Equipo "1" --|> "0..*" Jugador
+            
+        class Jugador{
+            +String nombre
+            +String apellido
+            +get (idJugador int)
+            +set (nombres String)
+        }
+        direction LR    
+        Jugador "1" --|> "0..*" Sancion
         
-            class Jugador
-            Jugador : +String nombre
-            Jugador : +String apellido
-            Jugador : +get (idJugador int)
-
-            Jugador "1" --> "0..*" Sancion
-
-            class Sancion
-            Sancion : +String observacion
-            Sancion : +float multa
-            Sancion : +get (calcularMulta float)
-
+        class Sancion{
+            +String observacion
+            +float multa
+            +get (calcularMulta float)
+            +set (observacion String)
+            +set (multa float)
+        }
+        
         </div>
+        <h5>Por: Wilson Sanchez</h5>
     </body>
 </html>
